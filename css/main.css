@@ -1,0 +1,32 @@
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    box-sizing: border-box;
+    background: #ebeff1;
+    margin: 0;
+    font-size: 16px;
+}
+.containter{
+    margin:32px auto;
+    max-width: 1200px;
+    width: 100%;
+}
+input{
+    display: block;
+    line-height: 3em;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid;
+    border-left-color: #eee;
+    border-top-color: #eee;
+    border-right-color: #ccc;
+    border-bottom-color: #ccc;
+    border-radius: 4px;
+}
+.bg{
+    background: #fff;
+    padding: 16px;
+    border: 1px solid rgba(0,0,0,0.1);
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo vue</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="containter">
+        
+     <div class="bg">
+        <input type="color" v-model="color">
+        <h1 :style={color:color}>Hola mundo ..!!</h1>
+        <h2 :style=[estiloto]>hola mundo ..!!</h2>
+        {{$data | json}}
+     </div>
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="js/ej6.js"></script>
+</body>
+</html>
