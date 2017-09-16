@@ -1,6 +1,8 @@
 new Vue({
-    el:'body',
-   
+    el:'.bg',
+   data:{
+       valor:true
+   }
     
     
     
