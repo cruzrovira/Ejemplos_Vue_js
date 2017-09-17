@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo vue</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .containter{
+          max-width: 450px;
+      }
+      form{
+          display: flex;
+          justify-content: center;
+          margin-bottom: 10px;
+        
+      }
+      [type='text']{
+          width: 80%;
+      }
+      .tarea{
+         box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+         padding: 16px;
+      }
+      .tool{
+          display: flex;
+          justify-content: flex-end;
+
+      }
+      .completo{
+          text-decoration: line-through;
+          
+      }
+      button{
+          line-height: 1.5em;
+          margin-left: 5px;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <div class="bg"> 
+                <form action="" @submit.prevent="guardar">
+                        <input type="text" v-model="nuevaTarea">
+                        <input type="submit" value="Guardar">
+                 </form>
+                 <div class="tarea" v-for="(tarea, index ) in tareas">
+                        <p  :class="{completo:tarea.completo}">{{tarea.nombre}}</p>
+                        <input type="text" v-if="updateTareaN == index" v-model="updateTarea" @blur="guardarUpdate(index)">
+
+                        <div class="tool">
+                            <button v-if="updateTareaN == index" @click="guardarUpdate(index)">
+                                <!-- botton Guardar actualizar-->
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            </button>
+                            <button @click="update(index)" v-if="updateTarea != index">
+                                <!-- botton Edit-->
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button @click="tarea.completo = !tarea.completo" >
+                                <!-- botton tarea realizada-->
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            
+                            <button @click="eliminar(index)" >
+                                <!-- botton delete-->
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div> 
+        
+                </div> 
+
+
+
+                <pre> {{$data | json}}</pre>   
+        </div> <!-- bg-->   
+    </div> -<!-- containter-->
+        
+
+    
+    <script src="js/vue.js"></script>
+    <script src="js/ej13.js"></script>
+</body>
+</html>
