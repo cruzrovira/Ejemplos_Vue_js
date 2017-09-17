@@ -13,7 +13,7 @@ body{
     max-width: 1200px;
     width: 100%;
 }
-input,button{
+input,button,select{
     display: block;
     line-height: 3em;
     outline: none;

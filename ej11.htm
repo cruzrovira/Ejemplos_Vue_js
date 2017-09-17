@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo vue</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <div class="bg"> 
+           <form action="">
+            <label for="nombre">Nombre</label>
+            <input type="text" v-model="nombre" id="nombre">
+            <label for="apellido">Apellido</label>
+            <input type="text" v-model="apellido">
+            Sexo
+            <hr>
+            <input type="radio"  id="masculino" name="sexo" v-model="sexo" value="m" >
+            <label for="masculino">Masculino</label> 
+            <input type="radio"  id="femenino" name="sexo" v-model="sexo" value="f">
+            <label for="femenino">Femenino</label>
+            <label for="pais">Pais</label>
+            <select id="pais" v-model="pais">
+                <option disabled value="">Selecione un pais</option>
+                <option >El Salvador</option>
+                <option >Honduras</option>
+                <option >Nicaragua</option>
+                <option >panama</option>
+            </select>
+            <label for="musica">Gustos musicales</label>
+            <select  id="musica" multiple v-model="musica">
+                
+                <option >Rock</option>
+                <option >Salsa</option>
+                <option >Merengue</option>
+                <option >bachata</option>
+            </select>
+            <input type="button" value="Enviar">
+           </form>
+            {{$data |json}}
+        </div>
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="js/ej11.js"></script>
+</body>
+</html>
