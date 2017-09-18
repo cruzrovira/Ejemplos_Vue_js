@@ -60,7 +60,7 @@
                                 <!-- botton Edit-->
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                             </button>
-                            <button @click="tarea.completo = !tarea.completo" >
+                            <button @click="guardarEstadoTarea(index)" >
                                 <!-- botton tarea realizada-->
                                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </button>
@@ -80,7 +80,7 @@
     </div> -<!-- containter-->
         
 
-    
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/ej13.js"></script>
 </body>

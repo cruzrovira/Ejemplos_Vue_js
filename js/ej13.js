@@ -1,25 +1,51 @@
 
-new Vue({
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCuYHwGDZLVP5zjpynZ6CFtkHcmLI0c-xw",
+    authDomain: "vuefirebase-989ed.firebaseapp.com",
+    databaseURL: "https://vuefirebase-989ed.firebaseio.com",
+    projectId: "vuefirebase-989ed",
+    storageBucket: "",
+    messagingSenderId: "124717551346"
+  };
+  firebase.initializeApp(config);
+  var db = firebase.database();
+
+var vm = new Vue({
     el:'.bg',
+    mounted:function(){
+        db.ref('tareas/').on('value',function(snapshot){
+            var tareasFr= snapshot.val();
+            vm.tareas=[];
+            for(item in tareasFr){
+                vm.tareas.unshift({
+                    key:item,
+                    nombre:tareasFr[item].nombre,
+                    completo:tareasFr[item].completo
+                });  
+                
+            }
+        });
+    },
     data:{
         nuevaTarea:null,
         updateTareaN: null,
         updateTarea: null,
-        tareas:[
-            {nombre:"aprender js",completo:true},
-            {nombre:"aprender vue y firebase",completo:false},
-            {nombre:"aprender html y css",completo:false},
-            {nombre:"aprender java",completo:false},
-        ]
+        tareas:[]
     },
     methods:{
         guardar:function(){
-            this.tareas.unshift({nombre:this.nuevaTarea,completo:false});
+            db.ref('tareas/').push({
+                nombre:this.nuevaTarea,
+                completo:false
+            });
             this.nuevaTarea='';
             
         },
         eliminar:function(index){
-            this.tareas.shift(index);
+            db.ref('tareas/'+this.tareas[index].key).remove();
+            
             
         },
         update:function(index){
@@ -27,10 +53,15 @@ new Vue({
             this.updateTarea= this.tareas[index].nombre;
         },
         guardarUpdate:function(index){
-            this.tareas[index].nombre = this.updateTarea;
+            //this.tareas[index].nombre = this.updateTarea;
+            db.ref('tareas/'+this.tareas[index].key).update({nombre:this.updateTarea});
             this.updateTarea= null;
             this.updateTareaN=null;
+        },
+        guardarEstadoTarea:function(index){
+            db.ref('tareas/'+this.tareas[index].key).update({completo:!this.tareas[index].completo});
         }
+
     }
 
 })
